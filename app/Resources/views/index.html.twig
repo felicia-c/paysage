@@ -1,0 +1,129 @@
+{% extends "::layout.html.twig" %}
+{% block title %}
+    {{ parent() }} - Accueil
+{% endblock %}
+
+
+{% block body %}
+
+
+{% for message in app.session.flashbag.get('neutre') %}
+<div class="flashbag inscrit w70 medium-w75 small-w75 tiny-w100 center pam">
+    <div class="w10 small-hidden inbl mts tiny-hidden">
+
+    </div>
+    <p class="col-sm-4 col-sm-offset-4  message-success">{{ message }}</p>
+</div>
+{% endfor %}
+
+
+    <!-- Portfolio Grid Section -->
+<section id="portfolio" class="bg-light-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Réalisations</h2>
+                <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+            </div>
+        </div>
+        <div class="row">
+
+            {% for chantier in chantiers %}
+            <div class="col-md-4 col-sm-6 portfolio-item">
+                <a href="#portfolioModal{{ chantier.id }}" class="portfolio-link" data-toggle="modal">
+                    <div class="portfolio-hover portfolio-hover--color-{{ chantier.categorie.id }}">
+                        <div class="portfolio-hover-content">
+                            <i class="fa fa-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <img src="{{ asset(chantier.webPath_vignette) }}" class="img-responsive" alt="{{ chantier.vignetteAlt }}">
+                </a>
+                <div class="portfolio-caption">
+                    <h4>{{ chantier.titre }}</h4>
+                    <p class="text-muted">{{ chantier.lieu }}</p>
+                </div>
+            </div>
+
+
+            <!-- Portfolio Modal -->
+            <div class="portfolio-modal modal fade" id="portfolioModal{{ chantier.id }}" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="close-modal" data-dismiss="modal">
+                            <div class="lr">
+                                <div class="rl">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-8 col-lg-offset-2">
+                                    <div class="modal-body">
+                                        <!-- Project Details Go Here -->
+                                        <h2>{{ chantier.titre }}</h2>
+                                        <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                                        <img class="img-responsive img-centered" src="{{ asset(chantier.webPath_vignette) }}" alt="{{ chantier.vignetteAlt }}">
+                                        <p>{{ chantier.description }}<p>
+                                        <ul class="list-inline">
+                                            <li>Date: July 2014</li>
+                                            <li>Client: Round Icons</li>
+                                            <li>Category: Graphic Design</li>
+                                        </ul>
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+
+<section id="contactform_index" class="get-in-touch">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Nous Contacter</h2>
+                <h3 class="section-subheading text-muted">Un projet ? Parlons-en !</h3>
+            </div>
+        </div>
+        <div class="row col-sm-8 col-sm-offset-2">
+                <form class="contact-form row">
+
+                    <div class="form-field col x-50">
+                        <input id="nom" class="input-text js-input" type="text" required="required">
+                        <label class="label" for="nom">Nom</label>
+                    </div>
+                    <div class="form-field col x-50">
+                        <input id="prenom" class="input-text js-input" type="text" required="">
+                        <label class="label" for="prenom">Prénom</label>
+                    </div>
+                    <div class="form-field col x-50">
+                        <input id="email" class="input-text js-input" type="email" required="required">
+                        <label class="label" for="email">E-mail</label>
+                    </div>
+                    <div class="form-field col x-50">
+                        <input id="phone" class="input-text js-input" type="text" required="">
+                        <label class="label" for="phone">Téléphone</label>
+                    </div>
+                    <div class="form-field col x-100">
+                        <textarea id="message" class="input-text js-input" required="required"></textarea>
+                        <label class="label textarea-label" for="message">Message</label>
+                    </div>
+                    <div class="form-field col x-100 contact-submit">
+                        <input class="submit-btn" type="submit" value="Envoyer">
+                    </div>
+                </form>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

@@ -1,0 +1,26 @@
+<html>
+<head>
+
+</head>
+
+<body>
+<header>
+    <h1>Jardins et terrasses</h1>
+</header>
+<section>
+    <h2>{{ chantiers|length }} chantier{% if chantiers|length > 1 %}s{% endif %} réalisé{% if chantiers|length > 1 %}s{% endif %}</h2>
+    {% for task in tasks %}
+
+        <h3>{{ chantier.titre }}</h3>
+        <p>période de réalisation : {{ chantier.annee|date("m/Y") }}</p>
+        <hr>
+    {% else %}
+        <p>Il n'y a encore aucun chantier !</p>
+
+    {% endfor %}
+</section>
+<footer>
+
+</footer>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<html>
+    <head>
+
+    </head>
+
+    <body>
+    <header>
+    <h1>to-do</h1>
+    </header>
+    <section>
+    <h2>Il y a {{ tasks|length }} truc{%  if tasks|length > 1 %}s{% endif %} à faire !</h2>
+    {% for task in tasks %}
+
+        <h3>{{ task.task }}</h3>
+        <p>à faire avant le : {{ task.dueDate|date("d/m/Y") }}</p>
+        <hr>
+    {% else %}
+        <p>Il n'y a rien à faire !</p>
+
+    {% endfor %}
+    </section>
+    <footer>
+
+    </footer>
+    </body>
+</html>

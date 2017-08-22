@@ -1,0 +1,146 @@
+<!doctype html>
+<!--[if lte IE 7]><html class="ie7 no-js"><![endif]-->
+<!--[if IE 8]><html class="ie8 no-js"><![endif]-->
+<!--[if IE 9]><html class="ie9 no-js"><![endif]-->
+<!--[if !IE]><!--><html class="no-js" lang="fr"><!--<![endif]-->
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Mon Paysagiste {% endblock %}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" href="{{ asset('bundles/paysage/img/favicon.png') }}" />
+    <!-- Optional theme -->
+
+    <link rel="stylesheet" href="{{ asset('bundles/paysage/css/bootstrap.min.css') }}" media="all">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="{{ asset('bundles/paysage/css/agency.css') }}" media="all">
+    <link rel="stylesheet" href="{{ asset('bundles/paysage/css/style.css ') }}" media="all">
+    {#<link rel="stylesheet/less" type="text/css" href="{{ asset('bundles/paysage/css/style.less ') }}">#}
+
+    <!--[if lt IE 9]>
+    <script src="{{ asset('bundles/paysage/js/html5shiv.js ') }}"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+
+<body id="page-top" class="index">
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="nav-slogan navbar-brand page-scroll" href="{{ path('paysage_home') }}#page-top">Mon paysagiste</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="{{ path('paysage_home') }}">Home</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="{{ path('paysage_home') }}#portfolio">Réalisations</a>
+                    </li>
+
+                    <li>
+                        <a class="page-scroll" href="{{ path('paysage_home') }}#contactform_index">Contact</a>
+                    </li>
+
+                    <li>
+                        <a class="page-scroll" href="{{ path('paysage_nouveau_chantier') }}">Nouveau Chantier</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <header>
+        <div class="gray-filter">
+            <div class="container">
+                <div class="intro-text">
+                    <div class="intro-lead-in"><h1>Adrien Rogard</h1></div>
+                    <div class="intro-heading"><h2>Mon paysagiste à Paris</h2></div>
+                    <!--<a href="#services" class="page-scroll btn btn-xl">Tell Me More</a>-->
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <div id="main" role="main" class="">
+
+        {% block body %}
+        {% endblock %}
+        
+    </div>
+    <footer id="footer" role="contentinfo" class="modal-footer col-sm-12 line pam mod clearfix w100">
+        <div class="w80 medium-w66 small-w50 tiny-w50 mal mrs inbl">
+            <p class="inbl w100"><span class="" id="copyright_text">© Mon Paysagiste {{ 'now'|date('Y') }} - Tous droits réservés
+            <a id="mention_link" class="lien-footer {% if app.request.attributes.get('_route') == 'macif_atelier_mentions' %}active-footer {% endif %}" href="#"> - Mentions légales</a>
+                    {#   <a id="mention_link" class="lien-footer" href="{{ path('macif_fondation_plan') }}">Plan du Site</a>   #}
+           </span>
+            </p>
+        </div>
+        {#
+        <div class="footer-logo w10 man inbl">
+            <a href="#" target="_blank" ><img id="footer_logo_link" class="logo-footer" src="{{ asset('bundles/paysage/img/logo-monpaysagiste.png') }}" /></a>
+        </div>
+        #}
+    </footer>
+
+
+
+{% block javascripts %}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="{{ asset('bundles/paysage/js/bootstrap.min.js') }}"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <script src="https://unpkg.com/isotope-layout@3.0/dist/isotope.pkgd.js"></script>
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js" integrity="sha384-mE6eXfrb8jxl0rzJDBRanYqgBxtJ6Unn4/1F7q4xRRyIw7Vdg9jP4ycT7x1iVsgb" crossorigin="anonymous"></script>
+
+    <!--Bootstrap -->
+    <script src="{{ asset('bundles/paysage/js/bootstrap.min.js') }}"></script>
+
+
+    <!-- Contact Form JavaScript -->
+    <script src="{{ asset('bundles/paysage/js/jqBootstrapValidation.js') }}"></script>
+    <script src="{{ asset('bundles/paysage/js/contact_me.js') }}"></script>
+    <script src="{{ asset('bundles/paysage/js/contactform.js') }}"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="{{ asset('bundles/paysage/js/agency.min.js') }}"></script>
+
+
+
+    {% endblock %}
+
+
+</body>
+</html>

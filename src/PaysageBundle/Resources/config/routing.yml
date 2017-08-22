@@ -1,0 +1,9 @@
+paysage_home:
+    path:     /
+    defaults:
+        _controller: PaysageBundle:Paysage:index
+
+paysage_nouveau_chantier:
+    path:     /nouveau
+    defaults:
+        _controller: PaysageBundle:Paysage:newChantier

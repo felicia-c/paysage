@@ -1,0 +1,53 @@
+{% extends "::layout.html.twig" %}
+<div class="form-asso pam mam w70 medium-w100 small-w100 tiny-w100 center">
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+    {# Les erreurs générales du formulaire. #}
+    {{ form_errors(form) }}
+
+    <div class=" mbs">
+        {# Génération du label. #}
+        {{ form_label(form.titre, "Titre", {'label_attr': {'class': 'control-label'}}) }}
+        {# Affichage des erreurs pour ce champ précis. #}
+        {{ form_errors(form.titre) }}
+        <div class="w100">
+            {# Génération de l'input. #}
+            {{ form_widget(form.titre, {'attr': {'class': 'form-control', 'required':'required'}}) }}
+        </div>
+
+    </div>
+
+    <div class="mbs">
+
+        {{ form_label(form.description, "Description", {'label_attr': {'class': 'form-control-label'}}) }}
+        {{ form_errors(form.description) }}
+        <div class="w100">
+            {{ form_widget(form.description, {'attr': {'class': 'form-control', 'required':'required'}}) }}
+        </div>
+
+    </div>
+
+    <div class="mbs">
+        <legend>Visuels</legend>
+
+        {{ form_label(form.Photo, "Photo miniature", {'label_attr': {'class': 'form-control-label'}}) }}
+        {{ form_errors(form.Photo) }}
+        <div class="w100">
+            {{ form_widget(form.filePhoto, {'attr': {'class': 'form-control', 'required':'required'} } ) }}
+        </div>
+
+
+    </div>
+
+
+    <div class="">
+        <div class="w100">
+            {{ form_rest(form) }}
+            {{ form_widget(form.enregistrer, {'attr': {'class': 'btn btn-secondary form-control mam' }}) }}
+        </div>
+    </div>
+
+    {# Fermeture de la balise <form> du formulaire HTML #}
+    {{ form_end(form) }}
+
+</div>

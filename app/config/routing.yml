@@ -1,0 +1,7 @@
+paysage:
+    resource: '@PaysageBundle/Resources/config/routing.yml'
+    prefix: /
+
+#app:
+#    resource: '@PaysageBundle/Controller/'
+#    type: annotation
