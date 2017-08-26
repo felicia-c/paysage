@@ -1,0 +1,28 @@
+{% extends "::layout.html.twig" %}
+
+{%  block title %}
+    Ajouter un chantier - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <section id="add" class="">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Modifier un chantier</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="form form-horizontal  col-md-12 col-lg-6 col-lg-offset-3 form-add-asso ">
+
+        {{ include("form-edit.html.twig") }}
+
+
+        <p>
+            <a href="{{ path('paysage_home') }}" class="retour-home"><i class="fa fa-chevron-left"></i> Retour aux chantiers</a>
+        </p>
+
+    </div>
+
+{% endblock %}

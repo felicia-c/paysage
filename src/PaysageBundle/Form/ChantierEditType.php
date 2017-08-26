@@ -1,19 +1,64 @@
 <?php
 
-namespace Paysage\PaysageBundle\Form;
+namespace PaysageBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ChantierEditType extends AbstractType
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+
+class ChantierType extends AbstractType
 {
+    /**
+     * {@inheritdoc}
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        //$builder->remove('date');
+        $builder
+            ->add('titre',            TextType::class)
+            ->add('lieu',             TextType::class)
+            //->add('annee',            DateTimeType::class)
+            ->add('description',      TextareaType::class)
+            //->add('photo',            FileType::class)
+            //->add('photoUrl')
+            // ->add('photoAlt',         TextType::class)
+
+
+            ->add('fileVignette',     FileType::class, array(
+               'required' => false ))
+            ->add('vignetteAlt',         TextType::class)
+            ->add('categorie',           EntityType::class, array(
+                'class'        => 'PaysageBundle:Categorie',
+                'choice_label' => 'name',
+                'multiple'     => false ))
+
+            ->add('save',             SubmitType::class);;
     }
 
-    public function getParent()
+    /**
+     * {@inheritdoc}
+     */
+    public function configureOptions(OptionsResolver $resolver)
     {
-        return ChantierType::class;
+        $resolver->setDefaults(array(
+            'data_class' => 'PaysageBundle\Entity\Chantier'
+        ));
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlockPrefix()
+    {
+        return 'paysagebundle_chantier';
+    }
+
+
+
 }

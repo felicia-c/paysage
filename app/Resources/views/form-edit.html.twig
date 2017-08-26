@@ -1,0 +1,143 @@
+{% block form %}
+    <div class="form-asso pam mam col-sm-12  center">
+        {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+        {# Les erreurs générales du formulaire. #}
+        {{ form_errors(form) }}
+
+        {#  TITRE #}
+        <div class=" mbs">
+            {# Génération du label. #}
+            {{ form_label(form.titre, "Titre", {'label_attr': {'class': 'form-control-label'}}) }}
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.titre) }}
+            <div class="w100">
+                {# Génération de l'input. #}
+                {{ form_widget(form.titre, {'attr': {'class': 'form-control', 'required':'required'}}) }}
+            </div>
+
+        </div>
+
+
+        {#  CATEGORIE  #}
+        <div class=" mbs">
+            {{ form_label(form.categorie, "Catégorie", {'label_attr': {'class': 'control-label'}}) }}
+            {{ form_errors(form.categorie) }}
+            <div class="w100">
+                {{ form_widget(form.categorie, {'attr': {'class': 'form-control', 'required':'required'} }) }}
+            </div>
+        </div>
+
+        <br>
+
+        {#  DESCRIPTION #}
+
+        <div class="mbs">
+
+            {{ form_label(form.description, "Description", {'label_attr': {'class': 'form-control-label'}}) }}
+            {{ form_errors(form.description) }}
+            <div class="w100">
+                {{ form_widget(form.description, {'attr': {'class': 'form-control', 'required':'required'}}) }}
+            </div>
+
+        </div>
+
+
+        {#  LIEU #}
+
+        <div class=" mbs">
+            {# Génération du label. #}
+            {{ form_label(form.lieu, "Lieu", {'label_attr': {'class': 'form-control-label'}}) }}
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.lieu) }}
+            <div class="w100">
+                {# Génération de l'input. #}
+                {{ form_widget(form.lieu, {'attr': {'class': 'form-control', 'required':'required'}}) }}
+            </div>
+
+        </div>
+        <br>
+
+
+        {#  PHOTO FILE
+        <div class="mbs">
+            <legend>Photos</legend>
+
+            {{ form_label(form.Photo, "Photo", {'label_attr': {'class': 'form-control-label'}}) }}
+            {{ form_errors(form.Photo) }}
+            <div class="w100">
+                {{ form_widget(form.filePhoto, {'attr': {'class': 'form-control', 'required':'required'} } ) }}
+            </div>
+
+
+        </div>
+
+        #}
+
+        {#  PHOTO ALT / TITRE PHOTO #}
+        {#
+            <div class=" mbs">
+
+                {{ form_label(form.photoAlt, "Titre photo", {'label_attr': {'class': 'form-control-label'}}) }}
+
+                {{ form_errors(form.photoAlt) }}
+                <div class="w100">
+
+                    {{ form_widget(form.photoAlt, {'attr': {'class': 'form-control', 'required':'required'}}) }}
+                </div>
+
+            </div>
+
+        #}
+
+     {#   <div class="mbs">
+            <legend>Photo</legend>
+
+            {{ form_label(form.fileVignette, "Photo", {'label_attr': {'class': 'form-control-label'}}) }}
+            {{ form_errors(form.fileVignette) }}
+            <div class="w100">
+                {{ form_widget(form.fileVignette, {'attr': {'class': 'form-control', 'required':'required'} } ) }}
+            </div>
+            {{ form_label(form.vignetteAlt, "Courte description de la photo", {'label_attr': {'class': 'form-control-label'}}) }}
+            {{ form_errors(form.vignetteAlt) }}
+            <div class="w100">
+                {{ form_widget(form.vignetteAlt, {'attr': {'class': 'form-control', 'required':'required'} } ) }}
+            </div>
+
+        </div>
+#}
+
+
+        {{ form_label(form.fileVignette, "Photo", {'label_attr': {'class': 'col-sm-4 form-control-label'}}) }}
+        {{ form_errors(form.fileVignette) }}
+        <div class="col-sm-10">
+            {% if (null != chantier.vignetteUrl) %}
+                <p><img class="thumbnail-form" src="{{ asset(chantier.webPath_vignette) }}" alt="{{ chantier.vignetteAlt }}" width="200"></p><br >
+                {{ form_widget(form.fileVignette, {'attr': {'class': 'form-control','value': chantier.fileVignette, 'type': 'hidden', 'name': 'miniature_actuelle' }} ) }}
+
+            {% else %}
+                <p class="orange">Il n'y a actuellement aucune photo pour cette association</p>
+            {%  endif %}
+            <br>
+            {{ form_widget(form.fileVignette, {'attr': {'class': 'form-control', 'value': chantier.fileVignette }} ) }}
+        </div>
+        {{ form_label(form.vignetteAlt, "Courte description de la photo", {'label_attr': {'class': 'col-sm-8 form-control-label'}}) }}
+        {{ form_errors(form.vignetteAlt) }}
+        <div class="col-sm-10">
+            {{ form_widget(form.vignetteAlt, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <br>
+        <div class="">
+            <div class="w100">
+
+                {{ form_widget(form.save, {'label': 'Enregistrer', 'attr': {'type': 'submit', 'class': 'btn btn-primary btn-lg btn-block' }}) }}
+            </div>
+        </div>
+        <br>
+        <p>Attention: Ce chantier sera ajouté directement sur le site après validation du formulaire</p>
+        {# Fermeture de la balise <form> du formulaire HTML #}
+        {{ form_end(form) }}
+
+    </div>
+
+{% endblock %}
