@@ -19,6 +19,17 @@
     </div>
 
 
+    {#  CATEGORIE  #}
+    <div class=" mbs">
+    {{ form_label(form.categorie, "Catégorie", {'label_attr': {'class': 'control-label'}}) }}
+    {{ form_errors(form.categorie) }}
+        <div class="w100">
+            {{ form_widget(form.categorie, {'attr': {'class': 'form-control', 'required':'required'} }) }}
+        </div>
+    </div>
+
+    <br>
+
     {#  DESCRIPTION #}
 
     <div class="mbs">

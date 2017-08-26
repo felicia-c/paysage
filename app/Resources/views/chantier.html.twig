@@ -1,0 +1,63 @@
+{% extends "::layout.html.twig" %}
+{% block title %}
+    {{ parent() }} - Accueil
+{% endblock %}
+
+
+{% block body %}
+
+
+{% for message in app.session.flashbag.get('neutre') %}
+    <div class="flashbag inscrit w70 medium-w75 small-w75 tiny-w100 center pam">
+        <div class="w10 small-hidden inbl mts tiny-hidden">
+
+        </div>
+        <p class="col-sm-4 col-sm-offset-4  message-success">{{ message }}</p>
+    </div>
+{% endfor %}
+
+    <section>
+
+<!-- Portfolio Modal -->
+<!--<div class="portfolio-modal modal fade" id="portfolioModal{{ chantier.id }}" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div> -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10 col-lg-offset-1">
+                        <div class="modal-body">
+                            <!-- Project Details Go Here -->
+                            <h2>{{ chantier.titre }}</h2>
+                            <h4>{{ chantier.categorie.name }}</h4>
+                            <p class="item-intro text-muted">{{ chantier.description }}</p>
+                            <img class="img-responsive img-centered" src="{{ asset(chantier.webPath_vignette) }}" alt="{{ chantier.vignetteAlt }}">
+
+                           <!-- <ul class="list-inline">
+                                <li>Date: July 2014</li>
+                                <li>Client: Round Icons</li>
+                                <li>Category: Graphic Design</li>
+                            </ul>-->
+
+                            <br>
+                            <!--<button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button> -->
+
+                            <a href="{{ path('paysage_home') }}" class="col-sm-6 text-left">< Retour aux réalisations</a>
+
+                           <a href="{{ path('paysage_chantier_edit', {'id' : chantier.id }) }}" class="col-sm-6 text-right"> Modifier</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+  <!--      </div>
+    </div>
+</div> -->
+
+</section>
+
+{% endblock %}

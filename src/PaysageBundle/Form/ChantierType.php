@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 class ChantierType extends AbstractType
@@ -32,6 +33,10 @@ class ChantierType extends AbstractType
             ->add('fileVignette',     FileType::class, array(
                 'required' => false ))
             ->add('vignetteAlt',         TextType::class)
+            ->add('categorie',           EntityType::class, array(
+                'class'        => 'PaysageBundle:Categorie',
+                'choice_label' => 'name',
+                'multiple'     => false ))
 
             ->add('save',             SubmitType::class);;
     }

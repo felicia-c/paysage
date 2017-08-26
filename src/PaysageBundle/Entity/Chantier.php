@@ -68,37 +68,6 @@ class Chantier
      */
     private $description;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="photo", type="string", length=255)
-     */
-    private $photo;
-
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="photo_url", type="string", length=255, nullable=true)
-     */
-    private $photoUrl;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="photo_alt", type="string", length=255, nullable=true)
-     */
-    private $photoAlt;
-
-    /**
-     * @var file
-     *
-     * @Assert\File(maxSize="5000000")
-     */
-    private $filePhoto;
-
-    private $tempFilename_photo;
-
 
     /**
      * @var string

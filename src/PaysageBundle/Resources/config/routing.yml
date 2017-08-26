@@ -3,7 +3,24 @@ paysage_home:
     defaults:
         _controller: PaysageBundle:Paysage:index
 
-paysage_nouveau_chantier:
+paysage_chantier_nouveau:
     path:     /nouveau
     defaults:
         _controller: PaysageBundle:Paysage:newChantier
+
+paysage_chantier_edit:
+    path:     /edit/{id}
+    defaults:
+        _controller: PaysageBundle:Paysage:edit
+    requirements:
+            id: \d+
+            format: html
+
+paysage_chantier_view:
+    path: /chantier/{id}
+    defaults:
+        _controller: PaysageBundle:Paysage:view
+    requirements:
+        id: \d+
+        format: html
+

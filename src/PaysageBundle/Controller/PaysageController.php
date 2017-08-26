@@ -113,41 +113,6 @@ class PaysageController extends Controller
      */
     public function newChantierAction(Request $request)
     {
-        // create a task and give it some dummy data for this example
-     /*
-        $chantier = new Chantier();
-        $chantier->setTitre('nouveau chantier');
-        $chantier->setLieu('Paris');
-
-        $form = $this->createFormBuilder($chantier)
-            ->add('titre', TextType::class)
-            ->add('lieu', TextType::class)
-            ->add('annee', IntegerType::class)
-            ->add('image', ImageType::class)
-            ->add('save', SubmitType::class, array('label' => 'Ajouter un chantier'))
-            ->getForm();
-
-
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            // $form->getData() holds the submitted values
-            // but, the original `$task` variable has also been updated
-            $task = $form->getData();
-            if ($request->isMethod('POST')) {
-                $form->submit($request->request->get($form->getName()));
-            }
-
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($task);
-            $em->flush();
-
-            return $this->redirectToRoute('/chantier-ajoute');
-        }
-
-    */
-
 
         //security check ROLE_ADMIN
        // $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Vous n\'avez pas accès à cette page');
@@ -246,10 +211,10 @@ class PaysageController extends Controller
 
                 $request->getSession()->getFlashBag()->add('neutre', 'Chantier modifié');
 
-                //return $this->redirectToRoute('macif_atelier_ateliers', array('id' => $id));
+                return $this->redirectToRoute('paysage_chantier_view', array('id' => $id));
             }
         }
-        return $this->render('PaysageBundle:Chantier:add-chantier.html.twig', array('form' => $form->createView(), 'chantier' => $chantier));
+        return $this->render('edit-chantier.html.twig', array('form' => $form->createView(), 'chantier' => $chantier));
     }
 
 
@@ -275,6 +240,26 @@ class PaysageController extends Controller
 
     }
 
+
+    /**
+     * @Route("/chantier/id")
+     */
+    public function viewAction($id)
+    {
+
+        $chantier = $this->getDoctrine()
+            ->getRepository('PaysageBundle:Chantier')
+            ->find($id);
+
+        if (!$chantier) {
+            throw $this->createNotFoundException(
+                'Ce chantier est introuvabe !'
+            );
+        }
+
+        return  $this->render('chantier.html.twig', array('chantier' => $chantier));
+
+    }
 
 
 }
