@@ -1,0 +1,19 @@
+{% extends "::layout.html.twig" %}
+
+{%  block title %}
+    Contact - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+
+        {{ include("form-contact.html.twig") }}
+
+
+        <p>
+            <a href="{{ path('paysage_home') }}" class="retour-home"><i class="fa fa-chevron-left"></i> Retour aux chantiers</a>
+        </p>
+
+    </div>
+
+{% endblock %}

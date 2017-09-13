@@ -1,0 +1,41 @@
+{% extends "::layout.html.twig" %}
+{% block title %}
+    {{ parent() }} - Message envoyé
+{% endblock %}
+
+
+{% block body %}
+
+{#
+    {% for message in app.session.flashbag.get('neutre') %}
+        <div class="flashbag inscrit w70 medium-w75 small-w75 tiny-w100 center pam">
+            <div class="w10 small-hidden inbl mts tiny-hidden">
+
+            </div>
+            <p class="col-sm-4 col-sm-offset-4  message-success">{{ message }}</p>
+        </div>
+    {% endfor %}
+#}
+    <section>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <div class="modal-body">
+                        <h2>Votre message a été envoyé !</h2>
+                        <p>Nous en prendrons connaissance d'ici quelques instants et vous répondrons dans les plus brefs délais.</p>
+
+                        <br>
+                        <br>
+                        <br>
+
+                        <h3><a href="{{ path('paysage_home') }}">< Retour</a></h3>
+                        <br>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

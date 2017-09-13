@@ -1,0 +1,16 @@
+<h3>You did it! You received a mail!</h3>
+
+Hi ! You've got a mail from {{ name }} !
+
+{# example, assuming you have a route named "login" :
+
+To login, go to: <a href="{{ url('login') }}">...</a>.
+
+Thanks!
+#}
+
+
+
+
+{# Makes an absolute URL to the /images/logo.png file #}
+<img src="{{ absolute_url(asset('img/logo.png')) }}">

@@ -24,3 +24,10 @@ paysage_chantier_view:
         id: \d+
         format: html
 
+paysage_contact:
+    path:     /contact
+    defaults: { _controller: PaysageBundle:Paysage:contact }
+
+paysage_mailsent:
+    path:    /message-envoye
+    defaults: { _controller: PaysageBundle:Paysage:mailsent }

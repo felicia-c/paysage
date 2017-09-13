@@ -15,11 +15,10 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use PaysageBundle\Form\ChantierType;
 
 
-
 class PaysageController extends Controller
 {
 
-    public function indexAction()
+    public function indexAction(Request $request)
     {
 
         $chantiers = $this->getDoctrine()
@@ -34,13 +33,45 @@ class PaysageController extends Controller
 
         $number = mt_rand(0, 100);
 
+
+        $form = $this->createForm('PaysageBundle\Form\ContactType',null,array(
+            // To set the action use $this->generateUrl('route_identifier')
+            'action' => $this->generateUrl('paysage_contact'),
+            'method' => 'POST'
+        ));
+
+        if ($request->isMethod('POST')) {
+            // Refill the fields in case the form is not valid.
+            $form->handleRequest($request);
+
+            if($form->isValid()){
+                // Send mail
+                if($this->sendEmail($form->getData())){
+
+                    // Everything OK, redirect to wherever you want ! :
+
+                    return $this->redirectToRoute('paysage_mailsent');
+                }else{
+                    // An error ocurred, handle
+                    var_dump("Errooooor :(");
+                }
+            }
+        }
+
         return $this->render('index.html.twig', array(
             'number' => $number,
-            'chantiers' => $chantiers
+            'chantiers' => $chantiers,
+            'form' => $form->createView()
         ));
     }
 
 
+    public function mailsentAction(){
+
+        return  $this->render('message-sent.html.twig');
+
+
+    }
 
     /**
      * @Route("/to-do")
@@ -260,6 +291,63 @@ class PaysageController extends Controller
         return  $this->render('chantier.html.twig', array('chantier' => $chantier));
 
     }
+
+    public function contactAction(Request $request)
+    {
+        // Create the form according to the FormType created previously.
+        // And give the proper parameters
+        $form = $this->createForm('PaysageBundle\Form\ContactType',null,array(
+            // To set the action use $this->generateUrl('route_identifier')
+            'action' => $this->generateUrl('paysage_contact'),
+            'method' => 'POST'
+        ));
+
+        if ($request->isMethod('POST')) {
+            // Refill the fields in case the form is not valid.
+            $form->handleRequest($request);
+
+            if($form->isValid()){
+                // Send mail
+                if($this->sendEmail($form->getData())){
+
+                    // Everything OK, redirect to wherever you want ! :
+
+                    return $this->redirectToRoute('paysage_mailsent');
+                }else{
+                    // An error ocurred, handle
+                    var_dump("Errooooor :(");
+                }
+            }
+        }
+
+        return $this->render('contact.html.twig', array(
+            'form' => $form->createView()
+        ));
+    }
+
+    private function sendEmail($data){
+        $myappContactMail = 'felicia.cuneo@gmail.com';
+        $myappContactPassword = 'Diabolo75';
+
+        // In this case we'll use the ZOHO mail services.
+        // If your service is another, then read the following article to know which smpt code to use and which port
+        // http://ourcodeworld.com/articles/read/14/swiftmailer-send-mails-from-php-easily-and-effortlessly
+        $transporter = \Swift_SmtpTransport::newInstance('smtp.gmail.com', 465,'ssl')
+            ->setUsername($myappContactMail)
+            ->setPassword($myappContactPassword);
+
+        $mailer = $this->mailer = \Swift_Mailer::newInstance($transporter);
+
+        $message = \Swift_Message::newInstance("Nouveau message du site !")
+            ->setFrom(array($myappContactMail => "Message de ".$data["name"]))
+            ->setTo(array(
+                $myappContactMail => $myappContactMail
+            ))
+            ->setBody("Message de ".$data["name"]." ".$data["firstname"]."\n \nMail :".$data["email"]."\n \n".$data["message"]);
+
+        return $mailer->send($message);
+    }
+
 
 
 }

@@ -1,4 +1,5 @@
 {% extends "::layout.html.twig" %}
+
 {% block title %}
     {{ parent() }} - Accueil
 {% endblock %}
@@ -36,7 +37,10 @@
                             <i class="fa fa-plus fa-3x"></i>
                         </div>
                     </div>
-                    <img src="{{ asset(chantier.webPath_vignette) }}" class="img-responsive" alt="{{ chantier.vignetteAlt }}">
+                    <div class="portfolio-img">
+                        <img src="{{ asset(chantier.webPath_vignette) }}" class="img-responsive" alt="{{ chantier.vignetteAlt }}">
+
+                    </div>
                 </a>
                 <div class="portfolio-caption">
                     <h4>{{ chantier.titre }}</h4>
@@ -53,46 +57,9 @@
 </section>
 
 
-
-<section id="contactform_index" class="get-in-touch">
-    <div class="container">
-
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h2 class="section-heading">Nous Contacter</h2>
-                <h3 class="section-subheading text-muted">Un projet ? Parlons-en !</h3>
-            </div>
-        </div>
-        <div class="row col-sm-8 col-sm-offset-2">
-                <form class="contact-form row">
-
-                    <div class="form-field col x-50">
-                        <input id="nom" class="input-text js-input" type="text" required="required">
-                        <label class="label" for="nom">Nom</label>
-                    </div>
-                    <div class="form-field col x-50">
-                        <input id="prenom" class="input-text js-input" type="text" required="">
-                        <label class="label" for="prenom">Prénom</label>
-                    </div>
-                    <div class="form-field col x-50">
-                        <input id="email" class="input-text js-input" type="email" required="required">
-                        <label class="label" for="email">E-mail</label>
-                    </div>
-                    <div class="form-field col x-50">
-                        <input id="phone" class="input-text js-input" type="text" required="">
-                        <label class="label" for="phone">Téléphone</label>
-                    </div>
-                    <div class="form-field col x-100">
-                        <textarea id="message" class="input-text js-input" required="required"></textarea>
-                        <label class="label textarea-label" for="message">Message</label>
-                    </div>
-                    <div class="form-field col x-100 contact-submit">
-                        <input class="submit-btn" type="submit" value="Envoyer">
-                    </div>
-                </form>
-        </div>
-    </div>
-</section>
-
+    {% include("form-contact.html.twig") %}
 
 {% endblock %}
+
+
+
