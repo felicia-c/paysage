@@ -329,7 +329,9 @@ class PaysageController extends Controller
         $myappContactMail = $this->container->getParameter('mailer_user');;
         $myappContactPassword = $this->container->getParameter('mailer_password');;
 
-        // http://ourcodeworld.com/articles/read/14/swiftmailer-send-mails-from-php-easily-and-effortlessly
+        $mail_from = $this->container->getParameter('mailer_from');;
+        $mail_to = $this->container->getParameter('mailer_to');;
+         // http://ourcodeworld.com/articles/read/14/swiftmailer-send-mails-from-php-easily-and-effortlessly
         $transporter = \Swift_SmtpTransport::newInstance('smtp.gmail.com', 465,'ssl')
             ->setUsername($myappContactMail)
             ->setPassword($myappContactPassword);
@@ -337,9 +339,10 @@ class PaysageController extends Controller
         $mailer = $this->mailer = \Swift_Mailer::newInstance($transporter);
 
         $message = \Swift_Message::newInstance("Nouveau message du site !")
-            ->setFrom(array($myappContactMail => "Message de ".$data["name"]))
+            ->setFrom(array($mail_from => $mail_from))
             ->setTo(array(
-                $myappContactMail => $myappContactMail
+                $myappContactMail => $myappContactMail,
+                $mail_to => $mail_to
             ))
             ->setBody("Message de ".$data["name"]." ".$data["firstname"]."\n \nMail :".$data["email"]."\n \n".$data["message"]);
 
