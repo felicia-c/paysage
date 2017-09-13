@@ -326,11 +326,9 @@ class PaysageController extends Controller
     }
 
     private function sendEmail($data){
-        $myappContactMail = 'felicia.cuneo@gmail.com';
-        $myappContactPassword = 'Diabolo75';
+        $myappContactMail = $this->container->getParameter('mailer_user');;
+        $myappContactPassword = $this->container->getParameter('mailer_password');;
 
-        // In this case we'll use the ZOHO mail services.
-        // If your service is another, then read the following article to know which smpt code to use and which port
         // http://ourcodeworld.com/articles/read/14/swiftmailer-send-mails-from-php-easily-and-effortlessly
         $transporter = \Swift_SmtpTransport::newInstance('smtp.gmail.com', 465,'ssl')
             ->setUsername($myappContactMail)
