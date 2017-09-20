@@ -1,0 +1,339 @@
+/***** CUSTOM STYLE for Paysage - by Felicia *****/
+/*
+@import url(https://fonts.googleapis.com/css?family=Raleway:300);
+@import url(https://fonts.googleapis.com/css?family=Lusitana:400,700);
+*/
+
+/* GLOBAL */
+html {
+
+}
+
+body {
+
+}
+h2{
+    color:  #7a9679;
+}
+
+h1, h3 {
+    margin-bottom: 0;
+    color: #E1D5C4;
+}
+
+h4{
+    color: #A28B6E;
+}
+
+ul, li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+img {
+    max-width: 100%;
+}
+
+a {
+    color: #E1D5C4;
+}
+
+a:hover,
+a:active {
+    color: #A28B6E;
+    text-decoration: none;
+}
+
+a {
+    transition-duration: 0.5s;
+}
+
+p a i {
+    margin:0;
+    padding: 0;
+}
+
+/* GENERAL - FORMS */
+form {
+    margin-bottom: 75px;
+}
+
+input, textarea, select {
+    margin-bottom: 50px;
+}
+
+.message-success{
+    text-align: center;
+    color: yellowgreen;
+    padding-top: 40px;
+    font-size: 1.6em;
+}
+
+
+.error-menu{
+    /*background-color: rgb(162, 139, 110);*/
+    background-color: rgba(111, 98, 79, 0.98);
+}
+/* HEADER */
+
+/*
+.navbar-custom{
+
+    background-color: #493C32;
+}
+nav#mainNav {
+    margin-top: 0;
+    padding-top: 0;
+}
+nav#mainNav .nav-slogan{
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    font-size: 1.5em;
+}
+
+*/
+
+.navbar-custom.affix {
+    background-color: rgba(111, 98, 79, 0.98);
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-brand:hover,
+.navbar-custom .navbar-brand:active,
+.navbar-custom .navbar-brand:focus {
+    color: #E1D5C4;
+    text-shadow: 0px 0px 6px black ;
+}
+
+
+.active {
+    color: #7a9679;
+}
+
+.navbar-custom .nav li a{
+    text-shadow: 0px 0px 6px black ;
+    font-weight: 600;
+}
+.navbar-custom .nav li a:hover, .navbar-custom .nav li a:focus{
+    color:  #7a9679;
+    text-shadow: 0px 0px 2px black ;
+
+   /* border-bottom: 2px solid white; */
+}
+
+.navbar-custom .navbar-nav > .active > a {
+    border-radius: 0;
+    color: white;
+    background-color: transparent;
+    border-bottom: 2px solid white;
+}
+.navbar-custom .navbar-nav > .active > a:hover, .navbar-custom .navbar-nav > .active > a:focus {
+    background-color: transparent;
+    border-bottom: 2px solid white;
+}
+
+header .intro-text{
+    padding-top: 200px;
+    padding-bottom: 150px;
+}
+
+header .intro-text .intro-lead-in {
+    font-style: normal;
+}
+
+header h1 {
+    text-shadow: 0px 0px 6px black ;
+    color: #e4ded5;
+}
+
+header h2 {
+    padding-bottom: 6%;
+    color: #a0907b;
+    font-weight: 600;
+    text-shadow: 0px 0px 12px black ;
+
+}
+
+.gray-filter{
+    background-color: rgba(80, 70, 53, 0.6);
+}
+
+/* INDEX */
+ul.index_liste-chantier li{
+    display: inline-block;
+}
+
+ul.index_liste-chantier h3 {
+    color:#9C7736;
+}
+
+#portfolio .portfolio-item .portfolio-link .portfolio-hover{
+    background-color: rgba(122, 150, 121, 0.96); /* rgba(56, 83, 49, 0.9);  #2b542c; */
+}
+
+
+#portfolio .portfolio-item .portfolio-link .portfolio-hover--color-1:hover {
+    background-color: rgba(232, 220, 120, 0.96);
+}
+.portfolio-hover--color-2 {
+
+}
+
+/* CONTACT */
+/*
+.get-in-touch {
+    max-width: 650px;
+    margin: 0 auto;
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+*/
+
+.get-in-touch{
+    margin: 0 auto;
+}
+.get-in-touch .title {
+    text-align: center;
+    font-family: Raleway, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 36px;
+    line-height: 48px;
+    padding-bottom: 48px;
+}
+
+.contact-form .form-field {
+    position: relative;
+    margin: 10px 0;
+}
+.contact-form .input-text {
+    display: block;
+    width: 100%;
+    height: 40px;
+    border-width: 0 0 2px 0;
+    border-color: #000;
+    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif, serif;
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 400;
+}
+.contact-form .input-text:focus {
+    outline: none;
+}
+.contact-form .input-text:focus + .label, .contact-form .input-text.not-empty + .label {
+    -webkit-transform: translateY(-24px);
+    transform: translateY(-24px);
+}
+.contact-form .label {
+    position: absolute;
+    left: 20px;
+    bottom: 50px;
+    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif, serif;
+    font-size: 1.8rem;
+    line-height: 26px;
+    font-weight: 400;
+    color: #888;
+    cursor: text;
+    -webkit-transition: -webkit-transform .2s ease-in-out;
+    transition: -webkit-transform .2s ease-in-out;
+    transition: transform .2s ease-in-out;
+    transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
+}
+.contact-form .submit-btn {
+    display: inline-block;
+    border: 2px solid #7a9679;
+    background-color:  white;
+    color:  #7a9679; /* rgba(34, 139, 34, 0.9);  #2b542c; */
+
+    font-family: Raleway, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 2rem;
+    line-height: 24px;
+    padding: 8px 16px;
+
+    cursor: pointer;
+
+    transition-property: background-color; /* Active la transition sur background-color */
+    transition-duration: 1.2s; /* La transition dure 1s */
+}
+
+.contact-form .submit-btn:hover{
+    background-color:  #7a9679;
+    color: white;
+}
+
+.contact-form textarea {
+    min-height: 150px;
+    max-height: 150px;
+    max-width: 100%;
+}
+.contact-form .textarea-label {
+    bottom: 170px;
+}
+
+
+.contact-submit{
+    width: 100%;
+    text-align: center;
+}
+
+.row .col {
+    padding: 0 20px;
+    float: left;
+    box-sizing: border-box;
+}
+
+
+.row .col.x-50 {
+    width: 50%;
+}
+
+.row .col.x-100 {
+    width: 100%;
+}
+
+
+
+/* ADD */
+
+section#add{
+    padding: 75px 0;
+}
+
+
+.retour-home {
+    margin-left: 0;
+    padding-left: 0;
+    font-size: 1.8em;
+}
+
+
+footer{
+    margin-top: 75px;
+}
+
+
+
+#portfolio .portfolio-item .portfolio-link {
+    text-align: center; /*for centering images inside*/
+}
+#portfolio .portfolio-item .portfolio-link img {
+    min-width: 100%; /*set the width or max-width*/
+    height: auto; /*this makes sure to maintain the aspect ratio*/
+}
+
+#paysagebundle_chantier_save{
+    border: 2px solid #7a9679;
+    background-color: white;
+    color: #7a9679;
+}
+
+#paysagebundle_chantier_save:hover{
+    background-color:  #7a9679;
+    color: white
+}
